@@ -1,0 +1,30 @@
+services:
+  # Backend service
+  - type: web
+    name: backend
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python run.py
+    healthCheckPath: /health
+    branch: main
+    envVars:
+      - key: DATABASE_URL
+        value: your_database_url
+    instanceType: free
+    regions:
+      - oregon
+
+  # Frontend service
+  - type: web
+    name: frontend
+    env: node
+    buildCommand: npm install
+    startCommand: npm run dev
+    healthCheckPath: /health
+    branch: main
+    envVars:
+      - key: BACKEND_URL
+        value: http://backend:8085
+    instanceType: free
+    regions:
+      - oregon

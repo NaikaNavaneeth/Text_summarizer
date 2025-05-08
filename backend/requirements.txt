@@ -3,3 +3,6 @@ uvicorn
 python-dotenv
 openai
 sumy
+PyPDF2
+python-docx
+flask-cors

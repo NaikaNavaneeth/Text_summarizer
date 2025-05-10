@@ -1,5 +1,5 @@
 import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
+import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import { componentTagger } from "lovable-tagger";
 
@@ -11,7 +11,9 @@ export default defineConfig(({ mode }) => ({
     port: 8089,
   },
   plugins: [
-    react(),
+    react(
+      jsx: 'react-jsx', 
+    ),
     mode === 'development' &&
     componentTagger(),
   ].filter(Boolean),
